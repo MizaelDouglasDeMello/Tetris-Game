@@ -36,5 +36,7 @@ Este é um projeto de jogo Tetris desenvolvido para Android. O jogo permite que 
 
 ## Screenshots
 
-![Gravação-de-Tela-2025-02-10-às-19 59 39](https://github.com/user-attachments/assets/3a479930-29aa-4090-be20-c93c41918b77)
+
+https://github.com/user-attachments/assets/22e2a922-2442-4e92-b26d-386b2c0eea35
+
 
