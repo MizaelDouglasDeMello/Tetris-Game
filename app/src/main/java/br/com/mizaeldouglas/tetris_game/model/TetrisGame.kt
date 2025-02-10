@@ -1,19 +1,6 @@
 package br.com.mizaeldouglas.tetris_game.model
 import kotlin.random.Random
 
-data class TetrominoShape(
-    val rotations: List<List<Pair<Int, Int>>>, // Cada rotação define offsets (linha, coluna) a partir do pivot
-    val color: Int, // Cor da peça
-    val id: Int     // Identificador único (usado no board)
-)
-
-data class TetrominoInstance(
-    val shape: TetrominoShape,
-    var rotation: Int = 0,
-    var centerRow: Int,
-    var centerCol: Int
-)
-
 class TetrisGame(
     // Board de 20 linhas x 10 colunas; 0: célula vazia, valores > 0: peça travada
     val board: Array<IntArray> = Array(20) { IntArray(10) { 0 } },

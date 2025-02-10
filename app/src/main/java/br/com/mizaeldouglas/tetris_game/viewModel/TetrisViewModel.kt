@@ -1,5 +1,7 @@
 package br.com.mizaeldouglas.tetris_game.viewModel
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,40 +16,45 @@ class TetrisViewModel : ViewModel() {
     private var timer: Timer? = null
     private var spawnDelayTicks: Int = 0
     private val spawnDelayThreshold = 2
+    private val handler = Handler(Looper.getMainLooper())
+    private val gameRunnable = object : Runnable {
+
+
+        override fun run() {
+            _game.value?.let { currentGame ->
+
+                if (currentGame.gameOver) {
+                    stopGame()
+                    return
+                }
+                if (currentGame.activePiece == null) {
+                    if (spawnDelayTicks >= spawnDelayThreshold) {
+                        currentGame.spawnPiece()
+                        spawnDelayTicks = 0
+                    } else {
+                        spawnDelayTicks++
+                    }
+                } else {
+                    currentGame.moveDown()
+                }
+                _game.postValue(currentGame)
+
+                handler.postDelayed(this, 500)
+            }
+        }
+    }
 
     fun startGame() {
         _game.value = TetrisGame()
         spawnDelayTicks = 0
         timer?.cancel()
-        timer = Timer()
-        timer?.scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                _game.value?.let { currentGame ->
-                    // Se o jogo acabou, interrompe as atualizações
-                    if (currentGame.gameOver) {
-                        stopGame()
-                        return
-                    }
-                    if (currentGame.activePiece == null) {
-                        if (spawnDelayTicks >= spawnDelayThreshold) {
-                            currentGame.spawnPiece()
-                            spawnDelayTicks = 0
-                        } else {
-                            spawnDelayTicks++
-                        }
-                    } else {
-                        currentGame.moveDown()
-                    }
-                    _game.postValue(currentGame)
-                }
-            }
-        }, 0, 500)
+        handler.post(gameRunnable)
     }
 
     fun stopGame() {
-        timer?.cancel()
-        timer = null
+        handler.removeCallbacks(gameRunnable)
     }
+
 
     fun moveLeft() {
         _game.value?.let { currentGame ->

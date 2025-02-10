@@ -1,4 +1,4 @@
-package br.com.mizaeldouglas.tetris_game
+package br.com.mizaeldouglas.tetris_game.view.activities
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import br.com.mizaeldouglas.tetris_game.R
 import br.com.mizaeldouglas.tetris_game.view.TetrisGameView
 import br.com.mizaeldouglas.tetris_game.viewModel.TetrisViewModel
 
@@ -39,6 +40,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        fun showRestartButton() {
+            val restartButton = findViewById<Button>(R.id.restartButton)
+            restartButton.visibility = View.VISIBLE
+        }
+
         startButton.setOnClickListener {
             viewModel.startGame()
         }
@@ -66,5 +72,6 @@ class MainActivity : AppCompatActivity() {
         restartButton.setOnClickListener {
             viewModel.restartGame()
         }
+
     }
 }

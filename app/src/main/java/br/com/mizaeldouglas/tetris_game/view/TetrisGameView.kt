@@ -77,13 +77,13 @@ class TetrisGameView @JvmOverloads constructor(
             // Se o jogo acabou, exibe Game Over no centro
             if (game.gameOver) {
                 val textPaint = Paint().apply {
-                    color = Color.RED
+                    color = Color.BLACK
                     textSize = 64f
                     isFakeBoldText = true
                     textAlign = Paint.Align.CENTER
                 }
                 canvas.drawText(
-                    "Game Over",
+                    "Game Over ☠️",
                     (width / 2).toFloat(),
                     (height / 2).toFloat(),
                     textPaint

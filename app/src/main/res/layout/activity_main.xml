@@ -13,6 +13,15 @@
         android:layout_weight="1" />
 
     <!-- Controles de movimento e rotação -->
+
+    <Button
+        android:id="@+id/restartButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Restart"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,24 +32,32 @@
             android:id="@+id/leftButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:textSize="18dp"
             android:text="←" />
 
         <Button
             android:id="@+id/downButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:textSize="18dp"
             android:text="↓" />
 
         <Button
             android:id="@+id/rightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:textSize="18dp"
             android:text="→" />
 
         <Button
             android:id="@+id/rotateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_500"
+            android:textSize="18dp"
             android:text="↻" />
     </LinearLayout>
 
@@ -54,21 +71,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start" />
+            android:backgroundTint="@color/black"
+            android:text="Start/Restart" />
 
         <Button
             android:id="@+id/stopButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/red"
             android:text="Stop" />
 
-        <Button
-            android:id="@+id/restartButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Restart"
-            android:visibility="gone" />
+
     </LinearLayout>
 </LinearLayout>
